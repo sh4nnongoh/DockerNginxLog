@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+  web:
+    build: ./samplewebapp
+    ports:
+      - "8080:80"
+    links:
+      - fluentd
+    logging:
+      driver: fluentd
+      options:
+        fluentd-address: localhost:24224
+        tag: samplewebapp.access
+
+  fluentd:
+    build: ./customfluentd
+    # volumes:
+    #   - ./customfluentd/conf:/fluentd/etc
+    links:
+      - "elasticsearch"
+    ports:
+      - "24224:24224"
+      - "24224:24224/udp"
+
+  elasticsearch:
+    image: elasticsearch:6.5.2
+    expose:
+      - 9200
+    ports:
+      - "9200:9200"
+
+  kibana:
+    image: kibana:6.5.2
+    links:
+      - "elasticsearch"
+    ports:
+      - "5601:5601"

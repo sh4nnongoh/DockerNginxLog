@@ -1,8 +1,16 @@
 # DockerNginxLog
 
-● Deploy a Dockerized application serving a static website via (e.g. via Nginx) that displays
-a custom welcome page (but not the default page for the web server used)
-● Use fluentd to ship Nginx request logs to an output of your choice (e.g. S3,
-ElasticSearch)
-● Provide a standalone solution including both webapp and fluentd using docker-compose
-and/or a kubernetes deployment (plain manifest or helm chart)
+- A Dockerized application is deployed to serve a static website via Nginx
+
+- fluentd is used to ship Nginx request logs to ElasticSearch
+
+- A standalone solution is provided that includes both webapp and EFK stack using docker-compose.
+
+## Building
+
+### Docker
+
+    $ docker-compose up --build
+
+- Navigate to http://localhost:8080 to view the HTML5 website.
+- Navigate to http://localhost:5601 to view HTTP requests in a Kibana dashboard.
