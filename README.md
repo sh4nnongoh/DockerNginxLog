@@ -12,5 +12,5 @@
 
     $ docker-compose up --build
 
-Navigate to http://localhost:8080 to view the HTML5 website.
-Navigate to http://localhost:5601 to view HTTP requests in a Kibana dashboard.
+- Navigate to http://localhost:8080 to view the HTML5 website.
+- Navigate to http://localhost:5601 to view HTTP requests in a Kibana dashboard.
